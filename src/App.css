@@ -1,0 +1,334 @@
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #970b0b;
+}
+.product-details {
+  background: #fff; /* Fondo blanco para resaltar la tarjeta */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.imagen-principal img {
+  max-height: 350px; /* Limitar altura para mantener la proporción */
+  object-fit: cover; /* Mantener la imagen ajustada */
+  border-radius: 8px;
+}
+/* Agregar a tu archivo CSS para una presentación más moderna */
+
+.card {
+  border: none;
+  border-radius: 15px; /* Bordes redondeados */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Elevar la tarjeta al pasar el cursor */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra más prominente */
+}
+
+.card-img-top {
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
+  height: 200px; /* Controlar la altura de la imagen */
+  object-fit: cover; /* Ajusta la imagen sin estirarla, recortándola si es necesario */
+  object-position: center; /* Centra la imagen dentro de su contenedor */
+}
+
+.card-body {
+  background-color: #f8f9fa; /* Fondo claro para el contenido */
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.text-success {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-body a {
+  text-decoration: none;
+}
+
+.btn {
+  background-color: #007bff;
+  color: white;
+  border-radius: 50px;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.transform-card {
+  transform: scale(1); /* Escalado inicial */
+}
+
+.transform-card:hover {
+  transform: scale(1.05); /* Aumento al pasar el ratón */
+}
+
+.col-md-4 {
+  display: flex;
+  justify-content: center; /* Centrar las tarjetas */
+}
+
+
+.cart-widget {
+  position: relative;
+}
+
+.cart-widget span {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size: 12px;
+}
+
+.item-count button {
+  margin: 5px;
+}
+.checkout-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.checkout-summary {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-summary h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.checkout-summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checkout-summary li {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.checkout-summary p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Contenedor que contiene las tarjetas */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 6 tarjetas por fila en PC */
+  gap: 20px; /* Espacio entre las tarjetas */
+  padding: 20px;
+}/* Estilo general del contenedor */
+.confirmation-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Título principal */
+.confirmation-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Sección del resumen */
+.confirmation-summary {
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+}
+
+/* Títulos de secciones */
+.section-title {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Lista de items */
+.item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.item-name {
+  font-weight: bold;
+  color: #555;
+}
+
+.item-details {
+  color: #999;
+}
+
+/* Total */
+.total-amount {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+}
+
+/* Información del cliente */
+.customer-info {
+  margin: 5px 0;
+  color: #666;
+}
+
+/* Botón */
+.back-button {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.back-button:hover {
+  background: #0056b3;
+}
+
+/* Mensaje de error */
+.no-info {
+  text-align: center;
+  color: #ff0000;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+
+/* Para tabletas (pantallas medianas) */
+@media (max-width: 1024px) {
+  .card-container {
+    grid-template-columns: repeat(4, 1fr); /* 4 tarjetas por fila en tablet */
+  }
+}
+
+/* Para dispositivos móviles */
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(1, 1fr); /* 1 tarjeta por fila en móviles */
+  }
+}
