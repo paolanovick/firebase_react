@@ -1,8 +1,9 @@
+
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import "./app.css";
 import Footer from "./components/Footer";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ItemList from "./components/ItemList";
 import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
@@ -27,7 +28,6 @@ const App = () => {
   const [item, setItem] = useState([]); // Items para el carrito
   const [selectedPrice, setSelectedPrice] = useState(null); // Precio seleccionado
 
-  // Obtener destinos desde Firestore
   useEffect(() => {
     const fetchDestinos = async () => {
       try {
@@ -39,7 +39,12 @@ const App = () => {
 
         // Filtrar países únicos a partir de los destinos
         const paisesUnicos = [
-          ...new Set(destinosData.flatMap((destino) => destino?.destino || [])),
+          ...new Set(
+            destinosData.flatMap((destino) => {
+              const pais = destino?.destino?.split(",")[0]; // Extraemos solo el país (antes de la coma)
+              return pais || [];
+            })
+          ),
         ];
         setPaises(paisesUnicos);
       } catch (err) {
@@ -74,20 +79,36 @@ const App = () => {
 
   // Filtrar destinos por país cuando el país seleccionado cambie
   useEffect(() => {
+     
     if (paisSeleccionado === "") {
       setDestinosFiltrados(destinos);
     } else {
       const destinosFiltradosPorPais = destinos.filter((destino) =>
         destino?.destino?.toLowerCase().includes(paisSeleccionado.toLowerCase())
       );
+        console.log("Destinos filtrados:", destinosFiltradosPorPais);
       setDestinosFiltrados(destinosFiltradosPorPais);
     }
   }, [paisSeleccionado, destinos]);
 
-  const handlePaisSeleccionado = (pais) => {
-    setPaisSeleccionado(pais);
-  };
+  const handlePaisSeleccionado = (paisSeleccionado) => {
+    console.log("Pais seleccionado:", paisSeleccionado);
 
+    // Filtra los destinos por el país seleccionado
+    const destinosFiltrados = destinos.filter((destino) => {
+      // Asegúrate de que el destino se divida correctamente en país y ciudad
+      const [pais, ciudad] = destino.destino
+        .split(",")
+        .map((item) => item.trim());
+      return pais === paisSeleccionado; // Compara solo el país
+    });
+
+    // Actualiza los destinos filtrados
+    setDestinosFiltrados(destinosFiltrados);
+
+    // Verifica el resultado en la consola
+    console.log("Destinos filtrados:", destinosFiltrados);
+  };
   // Obtener los items para el carrito desde Firestore
   useEffect(() => {
     const fetchItem = async () => {
@@ -114,6 +135,7 @@ const App = () => {
             onPaisSeleccionado={handlePaisSeleccionado}
           />
           <Routes>
+            <Route path="/" element={<Navigate to="/destinos" />} />
             <Route
               path="/destinos"
               element={

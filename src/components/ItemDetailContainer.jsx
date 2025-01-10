@@ -9,6 +9,7 @@ import {
   where,
   getDocs,
 } from "firebase/firestore";
+import { Carousel } from "react-bootstrap";
 // Asegúrate de tener esta función en tu archivo de Firebase
 
 import Button from "../components/Button";
@@ -172,16 +173,17 @@ const numericId = Number(id);
         </Col>
       </Row>
 
-      <div className="galeria-imagenes">
-        {galeria_imagenes.map((url, index) => (
-          <Image key={index} src={url} fluid rounded />
-        ))}
-      </div>
-
-      {/* Mostrar imágenes adicionales desde el array `url` */}
-      <div className="imagenes-adicionales">
-        {url.slice(1).map((imageUrl, index) => (
-          <Image key={index} src={imageUrl} fluid rounded />
+      <div className="galeria_imagenes">
+        {/* Muestra todas las imágenes en una galería */}
+        {url.map((imageUrl, index) => (
+          <Image
+            key={index}
+            src={imageUrl}
+            alt={`Imagen ${index + 1}`}
+            fluid
+            rounded
+            onError={(e) => (e.target.style.display = "none")} // Oculta imagen si hay un error de carga
+          />
         ))}
       </div>
     </Container>

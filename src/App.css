@@ -317,6 +317,28 @@ button:hover {
   font-size: 18px;
   margin-top: 20px;
 }
+.galeria_imagenes {
+  display: flex;
+  justify-content: center; /* Centra las imágenes dentro del contenedor */
+  gap: 15px; /* Espacio entre las imágenes */
+}
+
+.galeria_imagenes .image-container {
+  /* Cada imagen ocupará un tercio del contenedor */
+  display: flex; /* Usar flex para centrar las imágenes dentro del contenedor */
+  justify-content: center; /* Centra las imágenes horizontalmente */
+  align-items: center; /* Centra las imágenes verticalmente */
+  height: 300px; /* Altura fija para todas las imágenes */
+}
+
+.galeria_imagenes img {
+  width: 250px; /* Hace que la imagen ocupe todo el contenedor */
+  height: 250px; 
+   justify-content: center;/* Hace que la imagen ocupe todo el contenedor */
+ /* Asegura que las imágenes no se deformen */
+  border-radius: 10px;
+  margin: 20px;
+}
 
 
 /* Para tabletas (pantallas medianas) */

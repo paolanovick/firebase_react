@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 
-const ItemList = ({ paquetes = [] }) => {
+const ItemList = ({ destinos }) => {
   // Función para obtener y formatear un precio
   const formatearPrecio = (precio) => {
     if (isNaN(precio) || parseFloat(precio) <= 0) {
@@ -16,44 +16,44 @@ const ItemList = ({ paquetes = [] }) => {
     });
   };
 
-  if (paquetes.length === 0) {
-    return <div>No hay paquetes disponibles.</div>;
+  if (destinos.length === 0) {
+    return <div>No hay destinos disponibles.</div>;
   }
 
   return (
     <div className="row">
-      {paquetes.map((paquete) => (
+      {destinos.map((destino) => (
         <div
-          key={paquete.paquete_externo_id}
+          key={destino.paquete_externo_id} // Asumir que cada destino tiene un ID único
           className="col-lg-3 col-md-4 col-sm-6"
         >
           <div className="card">
             <img
               src={
-                paquete.url && paquete.url[0]
-                  ? paquete.url[0]
+                destino.url && destino.url[0]
+                  ? destino.url[0]
                   : "/placeholder.jpg"
               } // Validar existencia de imágenes
-              alt={paquete.titulo || "Imagen no disponible"}
+              alt={destino.titulo || "Imagen no disponible"}
               className="card-img-top"
             />
             <div className="card-body">
-              <h5 className="card-title">{paquete.titulo || "Sin título"}</h5>
+              <h5 className="card-title">{destino.titulo || "Sin título"}</h5>
               <p className="card-text">
-                {paquete.incluye || "Sin descripción"}
+                {destino.incluye || "Sin descripción"}
               </p>
               <p>
                 <strong>Precios:</strong>
                 <br />
-                Habitación Doble: {formatearPrecio(paquete.doble_precio)}
+                Habitación Doble: {formatearPrecio(destino.doble_precio)}
                 <br />
-                Habitación Triple: {formatearPrecio(paquete.triple_precio)}
+                Habitación Triple: {formatearPrecio(destino.triple_precio)}
                 <br />
-                Habitación Familiar: {formatearPrecio(paquete.familia_1_precio)}
+                Habitación Familiar: {formatearPrecio(destino.familia_1_precio)}
               </p>
 
               <div className="m-3">
-                <Link to={`/detalle/${paquete.paquete_externo_id}`}>
+                <Link to={`/detalle/${destino.paquete_externo_id}`}>
                   <Button label="Ver más" />
                 </Link>
               </div>
@@ -65,9 +65,9 @@ const ItemList = ({ paquetes = [] }) => {
   );
 };
 
-// Asegúrate de que la prop "paquetes" sea un array
+// Asegúrate de que la prop "destinos" sea un array
 ItemList.propTypes = {
-  paquetes: PropTypes.array.isRequired,
+  destinos: PropTypes.array.isRequired,
 };
 
 export default ItemList;

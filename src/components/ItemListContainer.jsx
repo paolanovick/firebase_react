@@ -104,7 +104,7 @@ const ItemDetailContainer = () => {
       </Row>
 
       {/* Galería de imágenes */}
-      <div className="galeria-imagenes">
+      <div className="galeria_imagenes">
         {galeria_imagenes.map((url, index) => (
           <Image key={index} src={url} fluid rounded />
         ))}
