@@ -115,26 +115,6 @@ const App = () => {
           />
           <Routes>
             <Route
-              path="/"
-              element={
-                <>
-                  <ItemListContainer destinos={destinosFiltrados} />
-                  {/* Agregar SelectPrices aquí */}
-                  <SelectPrices
-                    item={{
-                      doble_precio: 100,
-                      triple_precio: 150,
-                      familiar_precio: 200,
-                    }}
-                    onPriceSelect={handlePriceSelect}
-                  />
-                  {selectedPrice && (
-                    <p>Precio final seleccionado: ${selectedPrice}</p>
-                  )}
-                </>
-              }
-            />
-            <Route
               path="/destinos"
               element={
                 <ItemList paquetes={paquetes} destinos={destinosFiltrados} />
