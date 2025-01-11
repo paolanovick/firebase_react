@@ -1,7 +1,7 @@
 
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import "./src/app.css";
+import "./App.css";
 import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ItemList from "./components/ItemList";
