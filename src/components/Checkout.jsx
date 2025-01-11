@@ -1,9 +1,10 @@
+
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import Button from "../components/Button";
-
+import { serverTimestamp } from 'firebase/firestore'
 const Checkout = () => {
   const { cart, setCart, setPurchaseDetails, clearCart } = useCart();
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const Checkout = () => {
     email: "",
     address: "",
     paymentMethod: "",
+    
   });
   const [total, setTotal] = useState(0);
 
