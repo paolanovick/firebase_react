@@ -21,7 +21,6 @@ export const useCart = () => {
 
 // Proveedor del carrito
 export const CartProvider = ({ children }) => {
-   
   const [cartItems, setCartItems] = useState([]);
   const [cart, setCart] = useState([]);
   const [purchaseDetails, setPurchaseDetails] = useState(null); // Detalles de la compra
@@ -80,22 +79,22 @@ export const CartProvider = ({ children }) => {
   const calcularTotal = () => {
     return cartItems.reduce((total, item) => {
       const price = Number(item.selectedPrice) || 0; // Convertir a número y usar 0 si no es válido
-      const quantity = Number(item.quantity) || 0;
+      const quantity = Number(item.quantity) || 1;
+      console.log(`Item: ${item.name}, Price: ${price}, Quantity: ${quantity}`);
+ 
       return total + price * quantity;
     }, 0);
   };
-
-  // Función para vaciar el carrito
-  const clearCart = () => {
-    console.log("Vaciando el carrito");
-    setCartItems([]);
-  };
-
   // Contador de productos en el carrito
   const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   // Mostrar  del carrito
   console.log("Estado actual del carrito:", cartItems);
+  // Función para vaciar el carrito
+  const clearCart = () => {
+    console.log("Vaciando el carrito");
+    setCartItems([]);
+  };
 
   return (
     <CartContext.Provider
@@ -112,6 +111,7 @@ export const CartProvider = ({ children }) => {
         calcularTotal,
         purchaseDetails,
         setPurchaseDetails,
+        
       }}
     >
       {children}

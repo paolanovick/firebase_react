@@ -49,7 +49,7 @@ const Checkout = () => {
     e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
     console.log("Formulario enviado");
 
-    // Guardar los detalles de la compra en el contexto
+     const cartItems = cart; // Guardar los detalles de la compra en el contexto
     const purchaseDetails = {
       customer: formData, // Los datos del cliente desde el formulario
       cartItems: cart, // Los elementos del carrito
