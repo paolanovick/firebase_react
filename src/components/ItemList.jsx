@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 
 const ItemList = ({ destinos }) => {
+
+  
   // Función para obtener y formatear un precio
   const formatearPrecio = (precio) => {
     if (isNaN(precio) || parseFloat(precio) <= 0) {
@@ -15,48 +17,37 @@ const ItemList = ({ destinos }) => {
       currency: "ARS",
     });
   };
-
-  if (destinos.length === 0) {
-    return <div>No hay destinos disponibles.</div>;
-  }
+  
 
   return (
-    <div className="row">
+    <div className="item-list">
       {destinos.map((destino) => (
-        <div
-          key={destino.paquete_externo_id} // Asumir que cada destino tiene un ID único
-          className="col-lg-3 col-md-4 col-sm-6"
-        >
-          <div className="card">
-            <img
-              src={
-                destino.url && destino.url[0]
-                  ? destino.url[0]
-                  : "/placeholder.jpg"
-              } // Validar existencia de imágenes
-              alt={destino.titulo || "Imagen no disponible"}
-              className="card-img-top"
-            />
-            <div className="card-body">
-              <h5 className="card-title">{destino.titulo || "Sin título"}</h5>
-              <p className="card-text">
-                {destino.incluye || "Sin descripción"}
-              </p>
-              <p>
-                <strong>Precios:</strong>
-                <br />
-                Habitación Doble: {formatearPrecio(destino.doble_precio)}
-                <br />
-                Habitación Triple: {formatearPrecio(destino.triple_precio)}
-                <br />
-                Habitación Familiar: {formatearPrecio(destino.familia_1_precio)}
-              </p>
-
-              <div className="m-3">
-                <Link to={`/detalle/${destino.paquete_externo_id}`}>
-                  <Button label="Ver más" />
-                </Link>
-              </div>
+        <div key={destino.paquete_externo_id} className="card">
+          <img
+            src={
+              destino.url && destino.url[0]
+                ? destino.url[0]
+                : "/placeholder.jpg"
+            }
+            alt={destino.titulo || "Imagen no disponible"}
+            className="card-img-top"
+          />
+          <div className="card-body">
+            <h5 className="card-title">{destino.titulo || "Sin título"}</h5>
+            <p className="card-text">{destino.incluye || "Sin descripción"}</p>
+            <p>
+              <strong>Precios:</strong>
+              <br />
+              Habitación Doble: {formatearPrecio(destino.doble_precio)}
+              <br />
+              Habitación Triple: {formatearPrecio(destino.triple_precio)}
+              <br />
+              Habitación Familiar: {formatearPrecio(destino.familia_1_precio)}
+            </p>
+            <div className="m-3">
+              <Link to={`/detalle/${destino.paquete_externo_id}`}>
+                <Button label="Ver más" />
+              </Link>
             </div>
           </div>
         </div>

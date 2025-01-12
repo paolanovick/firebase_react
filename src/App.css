@@ -253,12 +253,19 @@ button:hover {
   margin-bottom: 10px;
 }
 
-/* Lista de items */
 .item-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  display: flex;
+  flex-wrap: nowrap; /* Evita el salto de línea */
+  overflow-x: auto; /* Agrega scroll horizontal si es necesario */
+  gap: 16px; /* Espaciado entre las tarjetas */
 }
+
+.item-list .card {
+  flex: 0 0 auto; /* Las tarjetas no se redimensionan */
+  width: 300px; /* Define el ancho de cada tarjeta */
+  margin: 0 8px; /* Espaciado entre tarjetas */
+}
+
 
 .item {
   display: flex;

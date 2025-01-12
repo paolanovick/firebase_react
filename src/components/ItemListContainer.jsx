@@ -15,6 +15,8 @@ const ItemDetailContainer = () => {
   const [error, setError] = useState(null);
   const { addToCart } = useCart();
 
+
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -55,7 +57,7 @@ const ItemDetailContainer = () => {
   }
 
   const {
-    detalles_adicionales,
+   
     destinos,
     fecha_vigencia_desde,
     fecha_vigencia_hasta,
@@ -95,7 +97,7 @@ const ItemDetailContainer = () => {
           <Card className="product-details">
             <Card.Body>
               <Card.Title>{titulo}</Card.Title>
-              <Card.Text>{descripcion}</Card.Text>
+              <Card.Text>{destinos}</Card.Text>
               <div className="precios">{renderPrecio(detalleProducto)}</div>
               <Button label="Agregar al carrito" onClick={handleAddToCart} />
             </Card.Body>

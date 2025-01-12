@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import CardWidget from "./CardWidget";
 
-const NavBar = ({ nombre, botonLabel, paises, onPaisSeleccionado }) => {
+const NavBar = ({ nombre, botonLabel, paises, onPaisSeleccionado, }) => {
   const { cartCount } = useCart();
 
   return (
@@ -26,12 +26,16 @@ const NavBar = ({ nombre, botonLabel, paises, onPaisSeleccionado }) => {
       <div style={{ fontSize: "20px", fontWeight: "bold", color: "#333" }}>
         {nombre}
       </div>
+
       <Link to="/destinos" style={{ textDecoration: "none" }}>
         <Button
           label={botonLabel}
-          onClick={() => console.log("Navegando a Destinos")}
+          onClick={() => {
+            onPaisSeleccionado(""); // Resetea el filtro para mostrar todos los destinos
+          }}
         />
       </Link>
+
       <div style={{ display: "flex", gap: "10px" }}>
         {/* Itera sobre los países y crea un botón para cada uno */}
         {paises.map((pais, index) => (

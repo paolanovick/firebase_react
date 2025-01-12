@@ -15,6 +15,8 @@ import { Carousel } from "react-bootstrap";
 import Button from "../components/Button";
 import { Container, Row, Col, Card, Image } from "react-bootstrap";
 
+
+
 const ItemDetailContainer = () => {
   const { id } = useParams(); // Obtén el idProducto desde los parámetros de la URL
   const [item, setItem] = useState(null);
@@ -125,10 +127,10 @@ const numericId = Number(id);
 
   const {
     titulo,
-    descripcion,
+    destino,
     url = [],
     incluye,
-    destinos,
+    
     fecha_vigencia_desde,
     fecha_vigencia_hasta,
     hotel,
@@ -136,6 +138,7 @@ const numericId = Number(id);
   } = item || {};
 
   return (
+    
     <Container className="item-detail-container">
       <h1 className="titulo-detalle text-center my-4">{titulo}</h1>
 
@@ -148,12 +151,12 @@ const numericId = Number(id);
           <Card className="product-details">
             <Card.Body>
               <Card.Title>{titulo}</Card.Title>
-              <Card.Text>{descripcion}</Card.Text>
+              <Card.Text>{destino}</Card.Text>
               <p>
                 <strong>Hotel:</strong> {hotel}
               </p>
               <p>
-                <strong>Destino:</strong> {destinos}
+                <strong>Destino:</strong> {destino}
               </p>
               <p>
                 <strong>Incluye:</strong> {incluye}

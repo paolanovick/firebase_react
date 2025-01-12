@@ -1,10 +1,10 @@
-
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import Button from "../components/Button";
-import { serverTimestamp } from 'firebase/firestore'
+import { savePurchaseToFirebase } from "../firebase/config"; // Importa la función de Firebase
+
 const Checkout = () => {
   const { cart, setCart, setPurchaseDetails, clearCart } = useCart();
   const [formData, setFormData] = useState({
@@ -12,7 +12,6 @@ const Checkout = () => {
     email: "",
     address: "",
     paymentMethod: "",
-    
   });
   const [total, setTotal] = useState(0);
 
@@ -46,20 +45,32 @@ const Checkout = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
     console.log("Formulario enviado");
 
     // Guardar los detalles de la compra en el contexto
     const purchaseDetails = {
-      customer: formData,
-      items: cart,
-      total: total, // Total extraído de la URL
+      customer: formData, // Los datos del cliente desde el formulario
+      cartItems: cart, // Los elementos del carrito
+      total: total, // El total de la compra
     };
 
     setPurchaseDetails(purchaseDetails); // Guardar detalles de compra en el contexto
-    clearCart(); // Esto vacía el carrito
-    navigate("/confirmacion"); // Redirigir a la página de confirmación
+
+    try {
+      // Guardar la compra en Firebase
+      const purchaseId = await savePurchaseToFirebase(purchaseDetails);
+      console.log("Compra realizada con éxito. ID:", purchaseId);
+
+      // Vaciar el carrito después de realizar la compra
+      clearCart();
+
+      // Redirigir a la página de confirmación
+      navigate("/confirmacion");
+    } catch (error) {
+      console.error("Error al guardar la compra:", error);
+    }
   };
 
   return (

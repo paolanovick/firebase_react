@@ -18,7 +18,7 @@ const TravelCard = ({ titulo, destinos, imagenPrincipal, precio, url }) => {
             </span>
           ))}
         </p>
-        <p className="card-text">Precio: ${precio}</p>
+        <p className="card-text">Precioooo: ${precio}</p>
         <a
           href={url}
           className="btn btn-primary"

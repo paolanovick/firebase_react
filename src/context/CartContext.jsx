@@ -1,3 +1,5 @@
+
+
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
@@ -5,6 +7,8 @@ import React, { createContext, useContext, useState } from "react";
 
 // CartContext.jsx
 const CartContext = createContext();
+ // Estado de los elementos en el carrito
+// Esto define la variable cart
 
 // Hook para usar el contexto
 export const useCart = () => {
@@ -17,7 +21,9 @@ export const useCart = () => {
 
 // Proveedor del carrito
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]); // Estado del carrito
+   
+  const [cartItems, setCartItems] = useState([]);
+  const [cart, setCart] = useState([]);
   const [purchaseDetails, setPurchaseDetails] = useState(null); // Detalles de la compra
 
   // Function to update the entire cart with new items
@@ -64,7 +70,7 @@ export const CartProvider = ({ children }) => {
     console.log(`Eliminando artículo con ID: ${itemId}`);
     setCartItems((prevItems) => {
       const updatedItems = prevItems.filter(
-        (item) => item.item.paquete_externo_id !== itemId
+        (item) => item.paquete_externo_id !== itemId
       );
       console.log("Nuevo carrito después de eliminar:", updatedItems);
       return updatedItems;
@@ -100,10 +106,12 @@ export const CartProvider = ({ children }) => {
         clearCart,
         decrementFromCart,
         itemCount,
-        purchaseDetails,
-        setPurchaseDetails,
+        cart,
+        setCart,
         updateCart,
         calcularTotal,
+        purchaseDetails,
+        setPurchaseDetails,
       }}
     >
       {children}
