@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 const Confirmation = () => {
   const { purchaseDetails } = useCart();
   const navigate = useNavigate();
-
   useEffect(() => {
+    console.log("Los detalles de la compre son: ", purchaseDetails);
     // Verifica si no hay detalles de compra y redirige al checkout
     if (!purchaseDetails) {
       console.log("No hay detalles de compra. Redirigiendo al checkout...");
@@ -16,7 +16,7 @@ const Confirmation = () => {
       // Debug: Verifica los detalles de la compra
       console.log("Detalles de la compra:", purchaseDetails);
     }
-  }, [purchaseDetails, navigate]);
+  }, [purchaseDetails]);
 
   return (
     <div className="confirmacion-container">
@@ -45,9 +45,8 @@ const Confirmation = () => {
             purchaseDetails.cartItems.length > 0 ? (
               purchaseDetails.cartItems.map((cartItem, index) => (
                 <li key={index}>
-                  {/* Debug: Verifica cada artículo comprado */}
-                  {console.log("Artículo comprado:", cartItem)}
-                  <strong>Título:</strong> {cartItem.name || "Sin título"} -
+                  <strong>Título:</strong>{" "}
+                  {cartItem.item.titulo || "Sin título"} -
                   <strong> Cantidad:</strong> {cartItem.quantity || 1}
                 </li>
               ))

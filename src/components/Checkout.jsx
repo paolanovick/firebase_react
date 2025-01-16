@@ -47,14 +47,15 @@ const Checkout = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
-    console.log("Formulario enviado");
+    console.log("El Carrito tiene :", cartItems);
 
-     const cartItems = cart; // Guardar los detalles de la compra en el contexto
     const purchaseDetails = {
       customer: formData, // Los datos del cliente desde el formulario
-      cartItems: cart, // Los elementos del carrito
+      cartItems: cartItems, // Los elementos del carrito
       total: total, // El total de la compra
     };
+
+    console.log("Los detalles de commpra son : ", purchaseDetails);
 
     setPurchaseDetails(purchaseDetails); // Guardar detalles de compra en el contexto
 

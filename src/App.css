@@ -37,33 +37,37 @@
 /* Agregar a tu archivo CSS para una presentación más moderna */
 
 .card {
-  border: none;
-  border-radius: 15px; /* Bordes redondeados */
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
+
 
 .card:hover {
-  transform: translateY(-10px); /* Elevar la tarjeta al pasar el cursor */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra más prominente */
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Imagen de la tarjeta */
 .card-img-top {
-  width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
-  height: 200px; /* Controlar la altura de la imagen */
-  object-fit: cover; /* Ajusta la imagen sin estirarla, recortándola si es necesario */
-  object-position: center; /* Centra la imagen dentro de su contenedor */
+  width: 100%;
+  aspect-ratio: 16/9; /* Mantener proporción 16:9 */
+  object-fit: cover; /* Ajustar imagen sin deformarla */
 }
 
+/* Contenido de la tarjeta */
 .card-body {
-  background-color: #f8f9fa; /* Fondo claro para el contenido */
   padding: 15px;
+  background-color: #f8f9fa;
 }
 
 .card-title {
   font-size: 1.25rem;
   font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .card-text {
@@ -77,16 +81,25 @@
   font-weight: bold;
 }
 
+.card-body p {
+  margin: 10px 0;
+}
+
+/* Botón dentro de la tarjeta */
 .card-body a {
   text-decoration: none;
 }
 
 .btn {
+  display: inline-block;
   background-color: #007bff;
-  color: white;
-  border-radius: 50px;
+  color: #fff;
   padding: 10px 20px;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 1rem;
   transition: background-color 0.3s ease;
+  margin-top: 10px;
 }
 
 .btn:hover {
@@ -254,10 +267,10 @@ button:hover {
 }
 
 .item-list {
-  display: flex;
-  flex-wrap: nowrap; /* Evita el salto de línea */
-  overflow-x: auto; /* Agrega scroll horizontal si es necesario */
-  gap: 16px; /* Espaciado entre las tarjetas */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Diseño flexible */
+  gap: 20px; /* Espacio entre tarjetas */
+  padding: 20px;
 }
 
 .item-list .card {
