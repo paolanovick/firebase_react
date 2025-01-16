@@ -21,25 +21,26 @@ const ItemList = ({ destinos }) => {
       {destinos.map((destino) => (
         <div key={destino.paquete_externo_id} className="card d-flex flex-row">
           {/* Imagen izquierda */}
-          <img
-            src={
-              destino.url && destino.url[0]
-                ? destino.url[0]
-                : "/placeholder.jpg"
-            }
-            alt={destino.titulo || "Imagen no disponible"}
-            className="card-img-left"
-            style={{
-              width: "200px",
-              height: "auto",
-              margin: "10px",
-              borderRadius: "10px", // Bordes redondeados
-            }}
-            // Ajusta el tamaño de la imagen
-          />
+          <div className="col-12 col-md-6">
+            <img
+              src={
+                destino.url && destino.url[0]
+                  ? destino.url[0]
+                  : "/placeholder.jpg"
+              }
+              alt={destino.titulo || "Imagen no disponible"}
+              className="card-img-left"
+              style={{
+                width: "100%",
+                height: "auto",
+                margin: "10px",
+                borderRadius: "10px", // Bordes redondeados si lo deseas
+              }}
+            />
+          </div>
 
           {/* Contenido de la tarjeta */}
-          <div className="card-body d-flex flex-column justify-content-between">
+          <div className="card-body d-flex flex-column justify-content-between col-12 col-md-6">
             <h5 className="card-title">{destino.titulo || "Sin título"}</h5>
             <p className="card-text">{destino.incluye || "Sin descripción"}</p>
             <p>
@@ -58,21 +59,23 @@ const ItemList = ({ destinos }) => {
             </div>
           </div>
           {/* Imagen derecha */}
-          <img
-            src={
-              destino.url && destino.url[1]
-                ? destino.url[1]
-                : "/placeholder.jpg"
-            }
-            alt={destino.titulo || "Imagen no disponible"}
-            className="card-img-right"
-            style={{
-              width: "200px",
-              height: "auto",
-              margin: "10px",
-              borderRadius: "10px", // Bordes redondeados
-            }}
-          />
+          <div className="col-12 col-md-6">
+            <img
+              src={
+                destino.url && destino.url[1]
+                  ? destino.url[1]
+                  : "/placeholder.jpg"
+              }
+              alt={destino.titulo || "Imagen no disponible"}
+              className="card-img-right"
+              style={{
+                width: "100%",
+                height: "auto",
+                margin: "10px",
+                borderRadius: "10px", // Bordes redondeados si lo deseas
+              }}
+            />
+          </div>
         </div>
       ))}
     </div>
