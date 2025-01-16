@@ -29,7 +29,13 @@ const ItemList = ({ destinos }) => {
             }
             alt={destino.titulo || "Imagen no disponible"}
             className="card-img-left"
-            style={{ width: "200px", height: "auto" }} // Ajusta el tamaño de la imagen
+            style={{
+              width: "200px",
+              height: "auto",
+              margin: "10px",
+              borderRadius: "10px", // Bordes redondeados
+            }}
+            // Ajusta el tamaño de la imagen
           />
 
           {/* Contenido de la tarjeta */}
@@ -51,7 +57,6 @@ const ItemList = ({ destinos }) => {
               </Link>
             </div>
           </div>
-
           {/* Imagen derecha */}
           <img
             src={
@@ -61,7 +66,12 @@ const ItemList = ({ destinos }) => {
             }
             alt={destino.titulo || "Imagen no disponible"}
             className="card-img-right"
-            style={{ width: "200px", height: "auto" }} // Ajusta el tamaño de la imagen
+            style={{
+              width: "200px",
+              height: "auto",
+              margin: "10px",
+              borderRadius: "10px", // Bordes redondeados
+            }}
           />
         </div>
       ))}

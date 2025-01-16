@@ -6,14 +6,16 @@
   display: flex; /* Flexbox para alinear elementos en fila */
   flex-direction: row; /* Alinear elementos horizontalmente */
   align-items: center; /* Alinear verticalmente al centro */
-  background: #ffffff;
+  background: #ec0606;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   max-width: 100%; /* Ocupa todo el ancho disponible */
   margin: 20px auto; /* Centrar horizontalmente */
-  height: 200px; /* Ajustar altura fija */
+  height: 200px; 
+   justify-content: space-between;
+    box-sizing: border-box;/* Ajustar altura fija */
 }
 
 .card:hover {
@@ -27,7 +29,9 @@
   display: flex;
   align-items: center; /* Centrar verticalmente */
   justify-content: center; /* Centrar horizontalmente */
-  background-color: #f8f9fa; /* Fondo claro para resaltar la imagen */
+  background-color: #f8f9fa;
+ 
+   /* Fondo claro para resaltar la imagen */
 }
 
 
@@ -93,16 +97,23 @@
   display: flex;
   flex-wrap: wrap; /* Permite que las tarjetas se ajusten a la siguiente fila si no caben */
   gap: 16px; /* Espaciado entre las tarjetas */
-  justify-content: space-between; /* Distribuye las tarjetas uniformemente */
-}
+  justify-content: space-between; 
+  }
 
 .item-list .card {
   flex: 0 0 auto; /* Las tarjetas no se redimensionan */
   width: 100%; /* Cada tarjeta ocupa el 100% de la fila en dispositivos pequeños */
-  margin: 0 8px; /* Espaciado entre tarjetas */
+  margin: 8px; 
+   box-sizing: border-box;
+  display: flex;
+  flex-direction: row; /* Por defecto, las imágenes estarán a la izquierda y derecha */
+  justify-content: space-between; /* Asegura que las imágenes estén separadas */
+/* Espaciado entre tarjetas */
 }
 
-
+.item-list .card .card-body {
+  flex: 1; /* El contenido de la tarjeta ocupa el espacio restante */
+}
 
 .read-the-docs {
   color: #970b0b;
@@ -375,32 +386,53 @@ button:hover {
 /* Ajustes para tabletas (pantallas medianas) */
 @media (max-width: 1024px) {
   .card-container {
-    grid-template-columns: repeat(4, 1fr); /* 4 tarjetas por fila en tablet */
+    grid-template-columns: repeat(4, 1fr);
+     box-sizing: border-box; 
+     /* 4 tarjetas por fila en tablet */
   }
 }
 
 @media (max-width: 768px) {
-  
-  .itemList {
-        padding: 20px; /* Ajuste para pantallas más pequeñas */
-        font-size: 14px; /* Ajuste del tamaño de fuente */
-    }
   .card {
-    flex-direction: column; /* Cambia a una columna */
-    height: auto; /* Ajusta la altura */
+    display: flex;
+    flex-direction: column; /* Cambiar a diseño en columna */
+    height: auto; /* Ajustar la altura automáticamente */
+    margin: 10px; 
+     box-sizing: border-box;/* Reducir márgenes para ahorrar espacio */
   }
-  .card-text {
+
+  .card-img-left,
+  .card-img-right {
+    width: 100%; /* Las imágenes ocupan todo el ancho del contenedor */
+    margin-bottom: 10px; /* Espaciado entre imágenes */
+  }
+
+  .card-body {
+    padding: 10px;
+  }
+
+  .card-title {
+    font-size: 1.5rem; /* Ajustar el tamaño del título */
+  }
+
+ .card-text {
     display: -webkit-box;
-  -webkit-line-clamp: 3;  /* Limita a 3 líneas */
+  -webkit-line-clamp: 5;  /* Limita a 3 líneas */
   -webkit-box-orient: vertical;
   overflow: hidden;
-  line-clamp: 3;  /* También define la propiedad estándar */                    /* Asegurarse de que la altura se ajuste */
+  line-clamp: 5;  /* También define la propiedad estándar */                    /* Asegurarse de que la altura se ajuste */
 }
 
 
+  .m-3 {
+    margin-top: 10px;
+  }
+}
+
   .card-img-container {
     flex: 0 0 auto; /* Tamaño dinámico para la imagen */
-    width: 100%; /* La imagen ocupa todo el ancho */
+    width: 100%;
+    /* La imagen ocupa todo el ancho */
   }
 
   .card-content {
@@ -410,14 +442,15 @@ button:hover {
   .card-container {
     grid-template-columns: repeat(2, 1fr); /* 2 tarjetas por fila en móviles */
   }
-}
+
 
 @media (max-width: 480px) {
   .card {
     display: flex;
     flex-direction: column; /* Cambiar a diseño en columna */
     height: auto; /* Ajustar la altura automáticamente */
-    margin: 10px; /* Reducir márgenes para ahorrar espacio */
+    margin: 10px; 
+     box-sizing: border-box;/* Reducir márgenes para ahorrar espacio */
   }
 
   .card-img-left, .card-img-right {
@@ -448,7 +481,8 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 10px; /* Reducir el espacio entre tarjetas */
-    justify-content: center; /* Centrar elementos */
+    justify-content: center;
+     box-sizing: border-box; /* Centrar elementos */
   }
 
   .btn {
