@@ -380,6 +380,11 @@ button:hover {
 }
 
 @media (max-width: 768px) {
+  
+  .itemList {
+        padding: 20px; /* Ajuste para pantallas más pequeñas */
+        font-size: 14px; /* Ajuste del tamaño de fuente */
+    }
   .card {
     flex-direction: column; /* Cambia a una columna */
     height: auto; /* Ajusta la altura */
