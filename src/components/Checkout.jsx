@@ -45,34 +45,29 @@ const Checkout = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
-    console.log("El Carrito tiene :", cartItems);
+ const handleSubmit = async (e) => {
+   e.preventDefault();
 
-    const purchaseDetails = {
-      customer: formData, // Los datos del cliente desde el formulario
-      cartItems: cartItems, // Los elementos del carrito
-      total: total, // El total de la compra
-    };
+   const purchaseDetails = {
+     customer: formData,
+     cartItems,
+     total,
+   };
 
-    console.log("Los detalles de commpra son : ", purchaseDetails);
+   console.log("Detalles de compra antes de guardar:", purchaseDetails);
 
-    setPurchaseDetails(purchaseDetails); // Guardar detalles de compra en el contexto
+   setPurchaseDetails(purchaseDetails);
 
-    try {
-      // Guardar la compra en Firebase
-      const purchaseId = await savePurchaseToFirebase(purchaseDetails);
-      console.log("Compra realizada con éxito. ID:", purchaseId);
+   try {
+     const purchaseId = await savePurchaseToFirebase(purchaseDetails);
+     console.log("Compra realizada con éxito. ID:", purchaseId);
 
-      // Vaciar el carrito después de realizar la compra
-      clearCart();
-
-      // Redirigir a la página de confirmación
-      navigate("/confirmacion");
-    } catch (error) {
-      console.error("Error al guardar la compra:", error);
-    }
-  };
+     clearCart();
+     navigate("/confirmacion");
+   } catch (error) {
+     console.error("Error al guardar la compra:", error);
+   }
+ };
 
   return (
     <div className="checkout-container">
@@ -86,7 +81,7 @@ const Checkout = () => {
             </li>
           ))}
         </ul>
-        <p>Total: ${formatTotal(total)}</p>
+        <p>Total: {formatTotal(total)}</p>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="form-group">

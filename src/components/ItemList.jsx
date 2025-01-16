@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 
 const ItemList = ({ destinos }) => {
-
-  
   // Función para obtener y formatear un precio
   const formatearPrecio = (precio) => {
     if (isNaN(precio) || parseFloat(precio) <= 0) {
@@ -17,12 +15,12 @@ const ItemList = ({ destinos }) => {
       currency: "ARS",
     });
   };
-  
 
   return (
     <div className="item-list">
       {destinos.map((destino) => (
-        <div key={destino.paquete_externo_id} className="card">
+        <div key={destino.paquete_externo_id} className="card d-flex flex-row">
+          {/* Imagen izquierda */}
           <img
             src={
               destino.url && destino.url[0]
@@ -30,9 +28,12 @@ const ItemList = ({ destinos }) => {
                 : "/placeholder.jpg"
             }
             alt={destino.titulo || "Imagen no disponible"}
-            className="card-img-top"
+            className="card-img-left"
+            style={{ width: "200px", height: "auto" }} // Ajusta el tamaño de la imagen
           />
-          <div className="card-body">
+
+          {/* Contenido de la tarjeta */}
+          <div className="card-body d-flex flex-column justify-content-between">
             <h5 className="card-title">{destino.titulo || "Sin título"}</h5>
             <p className="card-text">{destino.incluye || "Sin descripción"}</p>
             <p>
@@ -50,6 +51,18 @@ const ItemList = ({ destinos }) => {
               </Link>
             </div>
           </div>
+
+          {/* Imagen derecha */}
+          <img
+            src={
+              destino.url && destino.url[1]
+                ? destino.url[1]
+                : "/placeholder.jpg"
+            }
+            alt={destino.titulo || "Imagen no disponible"}
+            className="card-img-right"
+            style={{ width: "200px", height: "auto" }} // Ajusta el tamaño de la imagen
+          />
         </div>
       ))}
     </div>

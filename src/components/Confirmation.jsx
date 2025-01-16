@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import { useCart } from "../context/CartContext";
@@ -7,55 +8,54 @@ const Confirmation = () => {
   const { purchaseDetails } = useCart();
   const navigate = useNavigate();
   useEffect(() => {
-    console.log("Los detalles de la compre son: ", purchaseDetails);
-    // Verifica si no hay detalles de compra y redirige al checkout
-    if (!purchaseDetails) {
+    if (purchaseDetails === null || !Object.keys(purchaseDetails).length) {
       console.log("No hay detalles de compra. Redirigiendo al checkout...");
       navigate("/checkout");
-    } else {
-      // Debug: Verifica los detalles de la compra
-      console.log("Detalles de la compra:", purchaseDetails);
     }
   }, [purchaseDetails]);
 
   return (
-    <div className="confirmacion-container">
+    <div className="confirmation-form">
       <h2>Confirmación de Compra</h2>
       {purchaseDetails ? (
         <>
-          <h3>Resumen de la compra</h3>
-          <p>
-            <strong>Nombre:</strong> {purchaseDetails.customer?.name || "N/A"}
-          </p>
-          <p>
-            <strong>Email:</strong> {purchaseDetails.customer?.email || "N/A"}
-          </p>
-          <p>
-            <strong>Dirección:</strong>{" "}
-            {purchaseDetails.customer?.address || "N/A"}
-          </p>
-          <p>
-            <strong>Método de pago:</strong>{" "}
-            {purchaseDetails.customer?.paymentMethod || "N/A"}
-          </p>
+          <div className="form-section">
+           
+            <p>
+              <strong>Nombre:</strong> {purchaseDetails.customer?.name || "N/A"}
+            </p>
+            <p>
+              <strong>Email:</strong> {purchaseDetails.customer?.email || "N/A"}
+            </p>
+            <p>
+              <strong>Dirección:</strong>{" "}
+              {purchaseDetails.customer?.address || "N/A"}
+            </p>
+            <p>
+              <strong>Método de pago:</strong>{" "}
+              {purchaseDetails.customer?.paymentMethod || "N/A"}
+            </p>
+          </div>
 
-          <h3>Artículos Comprados:</h3>
-          <ul>
-            {purchaseDetails.cartItems &&
-            purchaseDetails.cartItems.length > 0 ? (
-              purchaseDetails.cartItems.map((cartItem, index) => (
-                <li key={index}>
-                  <strong>Título:</strong>{" "}
-                  {cartItem.item.titulo || "Sin título"} -
-                  <strong> Cantidad:</strong> {cartItem.quantity || 1}
-                </li>
-              ))
-            ) : (
-              <li>No hay artículos comprados.</li>
-            )}
-          </ul>
+          <div className="form-section">
+            <h3>Artículos Comprados:</h3>
+            <ul>
+              {purchaseDetails.cartItems &&
+              purchaseDetails.cartItems.length > 0 ? (
+                purchaseDetails.cartItems.map((cartItem, index) => (
+                  <li key={index}>
+                    <strong>Destino:</strong>{" "}
+                    {cartItem.item.titulo || "Sin título"} -{" "}
+                    <strong>Cantidad:</strong> {cartItem.quantity || 1}
+                  </li>
+                ))
+              ) : (
+                <li>No hay artículos comprados.</li>
+              )}
+            </ul>
+          </div>
 
-          <h3>Total: {purchaseDetails.total || 0}</h3>
+          <h3>Total: ${purchaseDetails.total || 0}</h3>
         </>
       ) : (
         <p>No se encontraron detalles de la compra.</p>

@@ -14,10 +14,108 @@
   }
 }
 
-
+/* Estilo general de las tarjetas */
 .card {
-  padding: 2em;
+  display: flex; /* Flexbox para alinear elementos en fila */
+  flex-direction: row; /* Alinear elementos horizontalmente */
+  align-items: center; /* Alinear verticalmente al centro */
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 100%; /* Ocupa todo el ancho disponible */
+  margin: 20px auto; /* Centrar horizontalmente */
+  height: 200px; /* Ajustar altura fija */
 }
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor de la imagen */
+.card-img-container {
+  flex: 0 0 200px; /* Imagen ocupa un tamaño fijo de 200px */
+  display: flex;
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+  background-color: #f8f9fa; /* Fondo claro para resaltar la imagen */
+}
+
+
+.card-content {
+  flex: 1; /* El texto ocupa el espacio restante */
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* Alinear elementos en columna */
+  justify-content: center; /* Centrar verticalmente el contenido */
+  background-color: #ffffff;
+}
+
+/* Título de la tarjeta */
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Texto de la tarjeta */
+.card-text {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Botón dentro de la tarjeta */
+.card-content .btn {
+  align-self: flex-start; /* Alinear botón a la izquierda */
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+}
+
+.card-content .btn:hover {
+  background-color: #0056b3;
+}
+
+
+/* Estilo del botón */
+.btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Contenedor de las tarjetas */
+.item-list {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas se ajusten a la siguiente fila si no caben */
+  gap: 16px; /* Espaciado entre las tarjetas */
+  justify-content: space-between; /* Distribuye las tarjetas uniformemente */
+}
+
+.item-list .card {
+  flex: 0 0 auto; /* Las tarjetas no se redimensionan */
+  width: 100%; /* Cada tarjeta ocupa el 100% de la fila en dispositivos pequeños */
+  margin: 0 8px; /* Espaciado entre tarjetas */
+}
+
+
 
 .read-the-docs {
   color: #970b0b;
@@ -34,77 +132,10 @@
   object-fit: cover; /* Mantener la imagen ajustada */
   border-radius: 8px;
 }
-/* Agregar a tu archivo CSS para una presentación más moderna */
-
-.card {
-  background: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
 
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
 
-/* Imagen de la tarjeta */
-.card-img-top {
-  width: 100%;
-  aspect-ratio: 16/9; /* Mantener proporción 16:9 */
-  object-fit: cover; /* Ajustar imagen sin deformarla */
-}
 
-/* Contenido de la tarjeta */
-.card-body {
-  padding: 15px;
-  background-color: #f8f9fa;
-}
-
-.card-title {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.card-text {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 15px;
-}
-
-.text-success {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-.card-body p {
-  margin: 10px 0;
-}
-
-/* Botón dentro de la tarjeta */
-.card-body a {
-  text-decoration: none;
-}
-
-.btn {
-  display: inline-block;
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 50px;
-  text-align: center;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
-}
-
-.btn:hover {
-  background-color: #0056b3;
-}
 
 .transform-card {
   transform: scale(1); /* Escalado inicial */
@@ -227,59 +258,56 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Contenedor que contiene las tarjetas */
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 6 tarjetas por fila en PC */
-  gap: 20px; /* Espacio entre las tarjetas */
+
+.confirmation-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   padding: 20px;
-}/* Estilo general del contenedor */
-.confirmation-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #f0f4f8;
 }
 
-/* Título principal */
+.confirmation-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
 .confirmation-title {
-  font-size: 24px;
+  font-size: 2rem;
   font-weight: bold;
   color: #333;
-  text-align: center;
   margin-bottom: 20px;
 }
 
-/* Sección del resumen */
+/* Información de la compra */
 .confirmation-summary {
-  border-top: 1px solid #ddd;
-  padding-top: 15px;
+  margin-top: 20px;
+  width: 100%;
+  text-align: left;
 }
 
-/* Títulos de secciones */
 .section-title {
-  font-size: 18px;
+  font-size: 1.5rem;
   color: #555;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-.item-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Diseño flexible */
-  gap: 20px; /* Espacio entre tarjetas */
-  padding: 20px;
+/* Información del cliente */
+.customer-info {
+  margin: 5px 0;
+  color: #666;
 }
 
-.item-list .card {
-  flex: 0 0 auto; /* Las tarjetas no se redimensionan */
-  width: 300px; /* Define el ancho de cada tarjeta */
-  margin: 0 8px; /* Espaciado entre tarjetas */
-}
-
-
+/* Estilo de los artículos comprados */
 .item {
   display: flex;
   justify-content: space-between;
@@ -296,34 +324,27 @@ button:hover {
   color: #999;
 }
 
-/* Total */
+/* Total de la compra */
 .total-amount {
-  font-size: 16px;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #333;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
-/* Información del cliente */
-.customer-info {
-  margin: 5px 0;
-  color: #666;
-}
-
-/* Botón */
+/* Botón de acción */
 .back-button {
-  display: block;
-  width: 100%;
-  margin-top: 20px;
-  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 24px;
   background: #007bff;
   color: white;
-  border: none;
-  border-radius: 5px;
+  border-radius: 50px;
+  font-size: 1.2rem;
   text-align: center;
-  font-size: 16px;
   cursor: pointer;
   text-transform: uppercase;
+  transition: background-color 0.3s ease;
 }
 
 .back-button:hover {
@@ -337,40 +358,64 @@ button:hover {
   font-size: 18px;
   margin-top: 20px;
 }
+
+/* Estilo de la galería de imágenes */
 .galeria_imagenes {
   display: flex;
-  justify-content: center; /* Centra las imágenes dentro del contenedor */
-  gap: 15px; /* Espacio entre las imágenes */
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .galeria_imagenes .image-container {
-  /* Cada imagen ocupará un tercio del contenedor */
-  display: flex; /* Usar flex para centrar las imágenes dentro del contenedor */
-  justify-content: center; /* Centra las imágenes horizontalmente */
-  align-items: center; /* Centra las imágenes verticalmente */
-  height: 300px; /* Altura fija para todas las imágenes */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  width: 250px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .galeria_imagenes img {
-  width: 250px; /* Hace que la imagen ocupe todo el contenedor */
-  height: 250px; 
-   justify-content: center;/* Hace que la imagen ocupe todo el contenedor */
- /* Asegura que las imágenes no se deformen */
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
   border-radius: 10px;
-  margin: 20px;
 }
 
-
-/* Para tabletas (pantallas medianas) */
+/* Ajustes para tabletas (pantallas medianas) */
 @media (max-width: 1024px) {
   .card-container {
     grid-template-columns: repeat(4, 1fr); /* 4 tarjetas por fila en tablet */
   }
 }
 
-/* Para dispositivos móviles */
 @media (max-width: 768px) {
+  .card {
+    flex-direction: column; /* Cambia a una columna */
+    height: auto; /* Ajusta la altura */
+  }
+
+  .card-img-container {
+    flex: 0 0 auto; /* Tamaño dinámico para la imagen */
+    width: 100%; /* La imagen ocupa todo el ancho */
+  }
+
+  .card-content {
+    padding: 15px; /* Ajustar espaciado en móviles */
+  }
+
   .card-container {
-    grid-template-columns: repeat(1, 1fr); /* 1 tarjeta por fila en móviles */
+    grid-template-columns: repeat(2, 1fr); /* 2 tarjetas por fila en móviles */
   }
 }
+
+@media (max-width: 480px) {
+  .card-container {
+    grid-template-columns: 1fr; /* 1 tarjeta por fila en pantallas muy pequeñas */
+  }
+}
+
+
