@@ -1,18 +1,5 @@
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
 
 /* Estilo general de las tarjetas */
 .card {
@@ -397,6 +384,14 @@ button:hover {
     flex-direction: column; /* Cambia a una columna */
     height: auto; /* Ajusta la altura */
   }
+  .card-text {
+    display: -webkit-box;
+  -webkit-line-clamp: 3;  /* Limita a 3 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-clamp: 3;  /* También define la propiedad estándar */                    /* Asegurarse de que la altura se ajuste */
+}
+
 
   .card-img-container {
     flex: 0 0 auto; /* Tamaño dinámico para la imagen */
@@ -413,9 +408,59 @@ button:hover {
 }
 
 @media (max-width: 480px) {
-  .card-container {
-    grid-template-columns: 1fr; /* 1 tarjeta por fila en pantallas muy pequeñas */
+  .card {
+    display: flex;
+    flex-direction: column; /* Cambiar a diseño en columna */
+    height: auto; /* Ajustar la altura automáticamente */
+    margin: 10px; /* Reducir márgenes para ahorrar espacio */
+  }
+
+  .card-img-left, .card-img-right {
+    width: 100px; /* Imagen ocupa todo el ancho */
+    height: auto; /* Ajustar proporcionalmente */
+  }
+
+  .card-body {
+    padding: 10px; /* Reducir espaciado interno */
+  }
+
+  .card-title {
+    font-size: 1.2rem; /* Ajustar tamaño del título */
+    margin-bottom: 10px; /* Separar un poco del texto */
+  }
+
+.card-text {
+    display: -webkit-box;
+  -webkit-line-clamp: 3;  /* Limita a 3 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-clamp: 3;  /* También define la propiedad estándar */                    /* Asegurarse de que la altura se ajuste */
+}
+
+
+
+  .item-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Reducir el espacio entre tarjetas */
+    justify-content: center; /* Centrar elementos */
+  }
+
+  .btn {
+    padding: 8px 16px; /* Reducir tamaño del botón */
+    font-size: 0.9rem; /* Ajustar el tamaño del texto */
+  }
+
+  h2, .card-title {
+    font-size: 1.4rem; /* Ajustar el tamaño del título */
+  }
+
+  p, .card-text {
+    font-size: 0.9rem; /* Reducir tamaño del texto */
+    line-height: 1.4; /* Aumentar espacio entre líneas */
   }
 }
+
+
 
 
